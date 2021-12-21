@@ -1,7 +1,7 @@
-package com.munteanu
+package com.munteanu.layers
 
+import zio.console.{getStrLn, putStrLn}
 import zio.{ExitCode, Has, Task, URIO, ZIO, ZLayer}
-import zio.console._
 
 object ZLayersDemo extends zio.App {
 
@@ -94,16 +94,17 @@ object ZLayersDemo extends zio.App {
   }
 
   import UserSubscription._
+
   val userSubscriptionLayer: ZLayer[Any, Nothing, UserSubscriptionEnv] = userBackendLayer >>> UserSubscription.live
 
   val roman = User("Roman", "roman@test.com")
   val message = "Sparkling Stars"
 
   override def run(args: List[String]): URIO[zio.ZEnv, ExitCode] =
-//    greeting.exitCode
-//    UserEmailer.notify(roman, message)
-//      .provideLayer(UserEmailer.live)
-//      .exitCode
+  //    greeting.exitCode
+  //    UserEmailer.notify(roman, message)
+  //      .provideLayer(UserEmailer.live)
+  //      .exitCode
     UserSubscription.subscribe(roman)
       .provideLayer(userSubscriptionLayer)
       .exitCode

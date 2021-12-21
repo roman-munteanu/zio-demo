@@ -1,7 +1,7 @@
-package com.munteanu
+package com.munteanu.layers
 
+import zio.duration.durationInt
 import zio.{Exit, ExitCode, UIO, URIO, ZIO}
-import zio.duration._
 
 object Fibers extends zio.App {
 
@@ -67,9 +67,9 @@ object Fibers extends zio.App {
   } yield ()
 
   override def run(args: List[String]): URIO[zio.ZEnv, ExitCode] =
-//    synchronousRoutine().exitCode
-//    concurrentDrumsAndRhythm().exitCode
-//    concurrentRoutine().exitCode
-//    concurrentRoutineWithInterrupt().exitCode
+  //    synchronousRoutine().exitCode
+  //    concurrentDrumsAndRhythm().exitCode
+  //    concurrentRoutine().exitCode
+  //    concurrentRoutineWithInterrupt().exitCode
     concurrentRoutineUninterruptible().exitCode
 }
